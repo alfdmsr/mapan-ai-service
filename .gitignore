@@ -22,3 +22,10 @@ venv/
 
 # OS
 .DS_Store
+
+# Synthetic CV dataset (besar, generate lokal)
+data/synthetic/*.json
+data/synthetic/debug_*.txt
+data/synthetic/.fingerprints/
+data/synthetic/generation_progress.json
+data/synthetic/failed_generations.log
