@@ -277,7 +277,7 @@ def get_gemini_api_key() -> str:
 
 def build_system_instruction() -> str:
     return (
-        "Anda adalah generator dataset NER untuk CV bahasa Indonesia.\n"
+        "Anda adalah generator dataset NER untuk CV bilingual (Indonesia atau Inggris).\n"
         "OUTPUT: satu objek JSON valid saja, tanpa markdown, tanpa penjelasan.\n"
         "ENTITAS: SKILL (keahlian), ROLE (jabatan).\n"
         "LABEL IOB: O, B-SKILL, I-SKILL, B-ROLE, I-ROLE.\n"
@@ -330,10 +330,15 @@ def build_variation_context(sector: str, index: int) -> str:
     )
 
 
+def pick_language(index: int) -> str:
+    return "en" if index % 2 == 0 else "id"
+
+
 def build_full_prompt(
     sector: str,
     cv_id: str,
     index: int,
+    language: str = "id",
     duplicate_feedback: str | None = None,
 ) -> str:
     variation = build_variation_context(sector, index)
@@ -344,15 +349,20 @@ def build_full_prompt(
             "Tulis CV baru yang benar-benar berbeda (peran, skill, kalimat).\n"
         )
 
+    if language == "id":
+        lang_instruction = "Tulis CV dalam Bahasa Indonesia natural (boleh istilah Inggris untuk skill teknis)."
+    else:
+        lang_instruction = "Write the CV in English (Indonesian job market context: local cities, companies, culture)."
+
     return (
         f"{build_system_instruction()}\n\n"
         f"TUGAS:\n"
         f"Buat 1 CV fiktif untuk sektor: {sector}\n"
         f"id: {cv_id}\n"
-        f"language: id\n"
+        f"language: {language}\n"
         f"Panjang raw_text: 90-160 kata.\n"
         f"Minimal {MIN_B_SKILL} entitas SKILL (B-SKILL) dan {MIN_B_ROLE} entitas ROLE (B-ROLE).\n"
-        f"Gunakan Bahasa Indonesia natural (boleh istilah Inggris untuk skill teknis).\n"
+        f"{lang_instruction}\n"
         f"Field JSON wajib: id, sector, language, raw_text, tokens, labels\n"
         f"sector di JSON harus persis: {sector}\n"
         f"{variation}\n"
@@ -437,10 +447,12 @@ def normalize_cv_record(record: dict) -> dict:
     return record
 
 
-def enforce_record_metadata(record: dict, sector: str, cv_id: str) -> dict:
+def enforce_record_metadata(
+    record: dict, sector: str, cv_id: str, language: str = "id",
+) -> dict:
     record["id"] = cv_id
     record["sector"] = sector
-    record["language"] = "id"
+    record["language"] = language
     return record
 
 
@@ -508,6 +520,7 @@ def generate_one_cv(
     cv_id: str,
     index: int,
     known_fingerprints: set[str],
+    language: str = "id",
 ) -> dict:
     last_error: Exception | None = None
 
@@ -520,6 +533,7 @@ def generate_one_cv(
             sector=sector,
             cv_id=cv_id,
             index=index,
+            language=language,
             duplicate_feedback=duplicate_feedback,
         )
 
@@ -534,7 +548,9 @@ def generate_one_cv(
                 response = model.generate_content(current_prompt)
                 record = parse_json_response(response.text)
                 record = normalize_cv_record(record)
-                record = enforce_record_metadata(record, sector=sector, cv_id=cv_id)
+                record = enforce_record_metadata(
+                    record, sector=sector, cv_id=cv_id, language=language,
+                )
                 validate_cv_record(record)
 
                 fp = content_fingerprint(record["raw_text"])
@@ -589,13 +605,13 @@ def run_sector_batch(
     start_index: int,
     end_index: int,
     progress: dict,
+    lang_mode: str = "mix",
 ) -> int:
     known_fingerprints = load_sector_fingerprints(sector)
     if not known_fingerprints:
         known_fingerprints = rebuild_fingerprints_from_disk(sector)
 
     saved_this_run = 0
-    prefix = SECTOR_ID_PREFIX[sector]
 
     for index in range(start_index, end_index + 1):
         cv_id = cv_id_for(sector, index)
@@ -604,10 +620,15 @@ def run_sector_batch(
         if out_path.exists():
             continue
 
+        if lang_mode == "mix":
+            language = pick_language(index)
+        else:
+            language = lang_mode
+
         total_target = CVS_PER_SECTOR * len(PILOT_SECTORS)
         done_global = progress.get("total_saved", 0)
         print(
-            f"[{sector}] {cv_id} ({index}/{end_index}) | "
+            f"[{sector}] {cv_id} ({index}/{end_index}) lang={language} | "
             f"global ~{done_global}/{total_target} | fps={len(known_fingerprints)}"
         )
 
@@ -618,6 +639,7 @@ def run_sector_batch(
                 cv_id=cv_id,
                 index=index,
                 known_fingerprints=known_fingerprints,
+                language=language,
             )
             fp = content_fingerprint(record["raw_text"])
             path = save_cv_record(record, sector=sector, fingerprint=fp)
@@ -628,7 +650,7 @@ def run_sector_batch(
             progress["updated_at"] = time.strftime("%Y-%m-%d %H:%M:%S")
             save_progress(progress)
             print(
-                f"  -> OK {path.name} | tokens={len(record['tokens'])} | "
+                f"  -> OK {path.name} | lang={language} tokens={len(record['tokens'])} | "
                 f"B-SKILL={sum(1 for l in record['labels'] if l == 'B-SKILL')}"
             )
         except Exception as exc:
@@ -640,7 +662,9 @@ def run_sector_batch(
     return saved_this_run
 
 
-def run_pilot_5_sectors(model: genai.GenerativeModel) -> list[Path]:
+def run_pilot_5_sectors(
+    model: genai.GenerativeModel, lang_mode: str = "mix",
+) -> list[Path]:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     saved_paths: list[Path] = []
 
@@ -653,16 +677,18 @@ def run_pilot_5_sectors(model: genai.GenerativeModel) -> list[Path]:
             saved_paths.append(out_path)
             continue
 
-        print(f"[{i + 1}/5] Generating: {cv_id} ({sector})...")
+        language = pick_language(1) if lang_mode == "mix" else lang_mode
+        print(f"[{i + 1}/5] Generating: {cv_id} ({sector}) lang={language}...")
         fps = load_sector_fingerprints(sector) or rebuild_fingerprints_from_disk(sector)
         record = generate_one_cv(
-            model, sector=sector, cv_id=cv_id, index=1, known_fingerprints=fps
+            model, sector=sector, cv_id=cv_id, index=1,
+            known_fingerprints=fps, language=language,
         )
         fp = content_fingerprint(record["raw_text"])
         path = save_cv_record(record, sector=sector, fingerprint=fp)
         saved_paths.append(path)
         print(
-            f"  -> tersimpan: {path.name} | "
+            f"  -> tersimpan: {path.name} | lang={language} "
             f"tokens={len(record['tokens'])} labels={len(record['labels'])}"
         )
 
@@ -677,6 +703,7 @@ def run_full_scale(
     sectors: list[str],
     start_index: int,
     end_index: int,
+    lang_mode: str = "mix",
 ) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     progress = load_progress()
@@ -686,6 +713,7 @@ def run_full_scale(
         f"Target: {CVS_PER_SECTOR} CV/sektor x {len(sectors)} sektor "
         f"= {CVS_PER_SECTOR * len(sectors)} total\n"
         f"Indeks per sektor: {start_index}..{end_index}\n"
+        f"Bahasa: {lang_mode} (mix = 50% id / 50% en)\n"
     )
 
     for sector in sectors:
@@ -697,6 +725,7 @@ def run_full_scale(
             start_index=start_index,
             end_index=end_index,
             progress=progress,
+            lang_mode=lang_mode,
         )
         print(f"Sektor {sector}: +{saved} file baru pada run ini.")
 
@@ -731,6 +760,12 @@ def parse_args() -> argparse.Namespace:
         help=f"Indeks CV akhir (default {CVS_PER_SECTOR})",
     )
     parser.add_argument(
+        "--lang",
+        choices=["mix", "id", "en"],
+        default="mix",
+        help="Bahasa CV: mix (50/50 id+en), id (Indonesia only), en (English only)",
+    )
+    parser.add_argument(
         "--rebuild-fingerprints",
         action="store_true",
         help="Rebuild file fingerprint dari JSON yang sudah ada, lalu keluar",
@@ -753,7 +788,7 @@ if __name__ == "__main__":
     model = setup_gemini()
 
     if args.mode == "pilot":
-        paths = run_pilot_5_sectors(model)
+        paths = run_pilot_5_sectors(model, lang_mode=args.lang)
         print(f"\nSelesai pilot. Total file: {len(paths)}")
     else:
         sectors = [args.sector] if args.sector else list(PILOT_SECTORS)
@@ -762,4 +797,5 @@ if __name__ == "__main__":
             sectors=sectors,
             start_index=args.start,
             end_index=min(args.end, CVS_PER_SECTOR),
+            lang_mode=args.lang,
         )
