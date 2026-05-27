@@ -29,3 +29,6 @@ data/synthetic/debug_*.txt
 data/synthetic/.fingerprints/
 data/synthetic/generation_progress.json
 data/synthetic/failed_generations.log
+
+# Exported artifacts (model, tokenizer, label mapping)
+exported_artifacts/
