@@ -1,0 +1,355 @@
+{
+  "catalog_version": "1.0.0",
+  "schema": "mapan_roles_catalog_v1",
+  "default_match_threshold": 0.6,
+  "roles": [
+    {
+      "role_id": "role_tek_backend_dev",
+      "sector": "Teknologi",
+      "role_name": "Backend Developer",
+      "role_name_id": "Pengembang Backend",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "Python",
+        "PostgreSQL",
+        "REST API",
+        "Git",
+        "Docker"
+      ],
+      "optional_skills": [
+        "Kubernetes",
+        "AWS",
+        "Node.js",
+        "MongoDB"
+      ]
+    },
+    {
+      "role_id": "role_tek_frontend_dev",
+      "sector": "Teknologi",
+      "role_name": "Frontend Developer",
+      "role_name_id": "Pengembang Frontend",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "JavaScript",
+        "React",
+        "Git",
+        "REST API",
+        "Figma"
+      ],
+      "optional_skills": [
+        "TypeScript",
+        "Node.js",
+        "Scrum"
+      ]
+    },
+    {
+      "role_id": "role_tek_devops_eng",
+      "sector": "Teknologi",
+      "role_name": "DevOps Engineer",
+      "role_name_id": "Insinyur DevOps",
+      "experience_band": "senior",
+      "required_skills": [
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Linux",
+        "CI/CD",
+        "Git"
+      ],
+      "optional_skills": [
+        "Python",
+        "SQL",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "role_id": "role_tek_data_analyst",
+      "sector": "Teknologi",
+      "role_name": "Data Analyst",
+      "role_name_id": "Analis Data",
+      "experience_band": "junior",
+      "required_skills": [
+        "SQL",
+        "Python",
+        "Microsoft Excel",
+        "Google Sheets",
+        "problem solving"
+      ],
+      "optional_skills": [
+        "TensorFlow",
+        "Google Analytics",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "role_id": "role_keu_finance_staff",
+      "sector": "Keuangan_Admin",
+      "role_name": "Finance Staff",
+      "role_name_id": "Staf Keuangan",
+      "experience_band": "junior",
+      "required_skills": [
+        "Microsoft Excel",
+        "pembukuan",
+        "rekonsiliasi bank",
+        "Accurate",
+        "invoice"
+      ],
+      "optional_skills": [
+        "SAP",
+        "MYOB",
+        "Google Sheets"
+      ]
+    },
+    {
+      "role_id": "role_keu_akuntan",
+      "sector": "Keuangan_Admin",
+      "role_name": "Akuntan",
+      "role_name_id": "Akuntan",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "pembukuan",
+        "pajak PPh",
+        "SAP",
+        "Microsoft Excel",
+        "rekonsiliasi bank"
+      ],
+      "optional_skills": [
+        "MYOB",
+        "Accurate",
+        "arsip dokumen"
+      ]
+    },
+    {
+      "role_id": "role_keu_staff_hr",
+      "sector": "Keuangan_Admin",
+      "role_name": "Staff HR",
+      "role_name_id": "Staf HR",
+      "experience_band": "junior",
+      "required_skills": [
+        "komunikasi kantor",
+        "Microsoft Excel",
+        "arsip dokumen",
+        "BPJS",
+        "Google Sheets"
+      ],
+      "optional_skills": [
+        "komunikasi interpersonal",
+        "Microsoft Office"
+      ]
+    },
+    {
+      "role_id": "role_keu_tax_officer",
+      "sector": "Keuangan_Admin",
+      "role_name": "Tax Officer",
+      "role_name_id": "Petugas Pajak",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "pajak PPh",
+        "pembukuan",
+        "Microsoft Excel",
+        "Accurate",
+        "arsip dokumen"
+      ],
+      "optional_skills": [
+        "SAP",
+        "rekonsiliasi bank"
+      ]
+    },
+    {
+      "role_id": "role_man_qc_inspector",
+      "sector": "Manufaktur_Engineering",
+      "role_name": "Quality Control Inspector",
+      "role_name_id": "Inspektur QC",
+      "experience_band": "junior",
+      "required_skills": [
+        "GMP",
+        "SOP produksi",
+        "ISO 9001",
+        "kalibrasi alat ukur",
+        "analisis root cause"
+      ],
+      "optional_skills": [
+        "5S",
+        "Six Sigma"
+      ]
+    },
+    {
+      "role_id": "role_man_maintenance_tech",
+      "sector": "Manufaktur_Engineering",
+      "role_name": "Maintenance Technician",
+      "role_name_id": "Teknisi Pemeliharaan",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "preventive maintenance",
+        "PLC",
+        "kalibrasi alat ukur",
+        "SOP produksi",
+        "5S"
+      ],
+      "optional_skills": [
+        "AutoCAD",
+        "analisis root cause"
+      ]
+    },
+    {
+      "role_id": "role_man_process_eng",
+      "sector": "Manufaktur_Engineering",
+      "role_name": "Process Engineer",
+      "role_name_id": "Insinyur Proses",
+      "experience_band": "senior",
+      "required_skills": [
+        "Lean Manufacturing",
+        "Six Sigma",
+        "SOP produksi",
+        "analisis root cause",
+        "AutoCAD"
+      ],
+      "optional_skills": [
+        "SAP PP",
+        "ISO 9001"
+      ]
+    },
+    {
+      "role_id": "role_man_prod_supervisor",
+      "sector": "Manufaktur_Engineering",
+      "role_name": "Production Supervisor",
+      "role_name_id": "Supervisor Produksi",
+      "experience_band": "senior",
+      "required_skills": [
+        "SOP produksi",
+        "5S",
+        "kepemimpinan tim",
+        "Lean Manufacturing",
+        "komunikasi interpersonal"
+      ],
+      "optional_skills": [
+        "Six Sigma",
+        "GMP"
+      ]
+    },
+    {
+      "role_id": "role_kre_graphic_designer",
+      "sector": "Kreatif_Media",
+      "role_name": "Graphic Designer",
+      "role_name_id": "Desainer Grafis",
+      "experience_band": "junior",
+      "required_skills": [
+        "Adobe Photoshop",
+        "Canva",
+        "branding",
+        "storytelling"
+      ],
+      "optional_skills": [
+        "Adobe Premiere Pro",
+        "Figma"
+      ]
+    },
+    {
+      "role_id": "role_kre_social_media",
+      "sector": "Kreatif_Media",
+      "role_name": "Social Media Specialist",
+      "role_name_id": "Spesialis Media Sosial",
+      "experience_band": "junior",
+      "required_skills": [
+        "Instagram Ads",
+        "TikTok content",
+        "copywriting",
+        "Canva",
+        "content strategy"
+      ],
+      "optional_skills": [
+        "Google Analytics",
+        "SEO"
+      ]
+    },
+    {
+      "role_id": "role_kre_digital_marketing",
+      "sector": "Kreatif_Media",
+      "role_name": "Digital Marketing Specialist",
+      "role_name_id": "Spesialis Digital Marketing",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "SEO",
+        "Google Analytics",
+        "copywriting",
+        "content strategy",
+        "Instagram Ads"
+      ],
+      "optional_skills": [
+        "TikTok content",
+        "branding"
+      ]
+    },
+    {
+      "role_id": "role_kre_video_editor",
+      "sector": "Kreatif_Media",
+      "role_name": "Video Editor",
+      "role_name_id": "Editor Video",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "Adobe Premiere Pro",
+        "After Effects",
+        "storytelling",
+        "branding"
+      ],
+      "optional_skills": [
+        "Adobe Photoshop",
+        "Canva"
+      ]
+    },
+    {
+      "role_id": "role_sal_sales_exec",
+      "sector": "Sales_Pelayanan",
+      "role_name": "Sales Executive",
+      "role_name_id": "Sales Executive",
+      "experience_band": "mid-level",
+      "required_skills": [
+        "negosiasi",
+        "penjualan B2B",
+        "presentasi",
+        "product knowledge",
+        "target omzet"
+      ],
+      "optional_skills": [
+        "CRM",
+        "bahasa Inggris komunikasi"
+      ]
+    },
+    {
+      "role_id": "role_sal_cs_specialist",
+      "sector": "Sales_Pelayanan",
+      "role_name": "Customer Service Specialist",
+      "role_name_id": "Spesialis Layanan Pelanggan",
+      "experience_band": "junior",
+      "required_skills": [
+        "handling complaint",
+        "CRM",
+        "komunikasi interpersonal",
+        "retensi pelanggan",
+        "bahasa Inggris komunikasi"
+      ],
+      "optional_skills": [
+        "WhatsApp Business",
+        "Moka POS"
+      ]
+    },
+    {
+      "role_id": "role_sal_business_dev",
+      "sector": "Sales_Pelayanan",
+      "role_name": "Business Development",
+      "role_name_id": "Business Development",
+      "experience_band": "senior",
+      "required_skills": [
+        "penjualan B2B",
+        "negosiasi",
+        "presentasi",
+        "CRM",
+        "bahasa Inggris komunikasi"
+      ],
+      "optional_skills": [
+        "product knowledge",
+        "target omzet"
+      ]
+    }
+  ]
+}

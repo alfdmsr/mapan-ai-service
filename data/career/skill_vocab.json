@@ -1,0 +1,660 @@
+{
+  "vocab_version": "1.0.0",
+  "schema": "mapan_skill_vocab_v1",
+  "dim": 72,
+  "normalization": {
+    "case_insensitive": true,
+    "strip_punctuation": true,
+    "collapse_whitespace": true,
+    "unknown_policy": "drop_and_log"
+  },
+  "global_aliases": {
+    "excel": "Microsoft Excel",
+    "ms excel": "Microsoft Excel",
+    "restful api": "REST API",
+    "api restful": "REST API",
+    "rest api": "REST API",
+    "postgresql": "PostgreSQL",
+    "postgres": "PostgreSQL",
+    "nodejs": "Node.js",
+    "node js": "Node.js",
+    "k8s": "Kubernetes",
+    "photoshop": "Adobe Photoshop",
+    "premiere pro": "Adobe Premiere Pro",
+    "premiere": "Adobe Premiere Pro",
+    "aftereffects": "After Effects",
+    "after effects": "After Effects",
+    "google sheet": "Google Sheets",
+    "whatsapp business": "WhatsApp Business",
+    "wa business": "WhatsApp Business",
+    "mongodb": "MongoDB",
+    "typescript": "TypeScript",
+    "ms office": "Microsoft Office",
+    "office": "Microsoft Office",
+    "plc programming": "PLC",
+    "six-sigma": "Six Sigma",
+    "lean": "Lean Manufacturing",
+    "javascript": "JavaScript",
+    "py": "Python",
+    "cicd": "CI/CD"
+  },
+  "skills": [
+    {
+      "index": 0,
+      "canonical": "Python",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "py"
+      ]
+    },
+    {
+      "index": 1,
+      "canonical": "Java",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 2,
+      "canonical": "JavaScript",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "js",
+        "javascript"
+      ]
+    },
+    {
+      "index": 3,
+      "canonical": "React",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 4,
+      "canonical": "Node.js",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "nodejs"
+      ]
+    },
+    {
+      "index": 5,
+      "canonical": "SQL",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 6,
+      "canonical": "PostgreSQL",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "postgres"
+      ]
+    },
+    {
+      "index": 7,
+      "canonical": "Docker",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 8,
+      "canonical": "Kubernetes",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "k8s"
+      ]
+    },
+    {
+      "index": 9,
+      "canonical": "AWS",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 10,
+      "canonical": "Git",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "git version control"
+      ]
+    },
+    {
+      "index": 11,
+      "canonical": "REST API",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "restful api",
+        "api restful"
+      ]
+    },
+    {
+      "index": 12,
+      "canonical": "TensorFlow",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 13,
+      "canonical": "Figma",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 14,
+      "canonical": "Scrum",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 15,
+      "canonical": "MongoDB",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 16,
+      "canonical": "TypeScript",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "ts"
+      ]
+    },
+    {
+      "index": 17,
+      "canonical": "Linux",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 18,
+      "canonical": "CI/CD",
+      "sector_tags": [
+        "Teknologi"
+      ],
+      "aliases": [
+        "cicd",
+        "ci cd"
+      ]
+    },
+    {
+      "index": 19,
+      "canonical": "Microsoft Excel",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": [
+        "excel",
+        "ms excel"
+      ]
+    },
+    {
+      "index": 20,
+      "canonical": "SAP",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 21,
+      "canonical": "MYOB",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 22,
+      "canonical": "Accurate",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 23,
+      "canonical": "pembukuan",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 24,
+      "canonical": "rekonsiliasi bank",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 25,
+      "canonical": "pajak PPh",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 26,
+      "canonical": "BPJS",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 27,
+      "canonical": "invoice",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 28,
+      "canonical": "arsip dokumen",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 29,
+      "canonical": "komunikasi kantor",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 30,
+      "canonical": "Google Sheets",
+      "sector_tags": [
+        "Keuangan_Admin"
+      ],
+      "aliases": [
+        "google sheet"
+      ]
+    },
+    {
+      "index": 31,
+      "canonical": "Lean Manufacturing",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": [
+        "lean"
+      ]
+    },
+    {
+      "index": 32,
+      "canonical": "Six Sigma",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": [
+        "six-sigma"
+      ]
+    },
+    {
+      "index": 33,
+      "canonical": "AutoCAD",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 34,
+      "canonical": "PLC",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": [
+        "plc programming"
+      ]
+    },
+    {
+      "index": 35,
+      "canonical": "SAP PP",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 36,
+      "canonical": "GMP",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 37,
+      "canonical": "kalibrasi alat ukur",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 38,
+      "canonical": "preventive maintenance",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 39,
+      "canonical": "SOP produksi",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 40,
+      "canonical": "5S",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 41,
+      "canonical": "ISO 9001",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 42,
+      "canonical": "analisis root cause",
+      "sector_tags": [
+        "Manufaktur_Engineering"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 43,
+      "canonical": "Adobe Photoshop",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": [
+        "photoshop"
+      ]
+    },
+    {
+      "index": 44,
+      "canonical": "Adobe Premiere Pro",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": [
+        "premiere",
+        "premiere pro"
+      ]
+    },
+    {
+      "index": 45,
+      "canonical": "Canva",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 46,
+      "canonical": "copywriting",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 47,
+      "canonical": "SEO",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 48,
+      "canonical": "Google Analytics",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 49,
+      "canonical": "Instagram Ads",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 50,
+      "canonical": "TikTok content",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 51,
+      "canonical": "storytelling",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 52,
+      "canonical": "branding",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 53,
+      "canonical": "After Effects",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": [
+        "aftereffects"
+      ]
+    },
+    {
+      "index": 54,
+      "canonical": "content strategy",
+      "sector_tags": [
+        "Kreatif_Media"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 55,
+      "canonical": "negosiasi",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 56,
+      "canonical": "CRM",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 57,
+      "canonical": "penjualan B2B",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 58,
+      "canonical": "penjualan B2C",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 59,
+      "canonical": "handling complaint",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 60,
+      "canonical": "target omzet",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 61,
+      "canonical": "product knowledge",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 62,
+      "canonical": "presentasi",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 63,
+      "canonical": "bahasa Inggris komunikasi",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 64,
+      "canonical": "retensi pelanggan",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 65,
+      "canonical": "Moka POS",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 66,
+      "canonical": "WhatsApp Business",
+      "sector_tags": [
+        "Sales_Pelayanan"
+      ],
+      "aliases": [
+        "wa business"
+      ]
+    },
+    {
+      "index": 67,
+      "canonical": "Microsoft Office",
+      "sector_tags": [
+        "cross_sector"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 68,
+      "canonical": "komunikasi interpersonal",
+      "sector_tags": [
+        "cross_sector"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 69,
+      "canonical": "manajemen waktu",
+      "sector_tags": [
+        "cross_sector"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 70,
+      "canonical": "kepemimpinan tim",
+      "sector_tags": [
+        "cross_sector"
+      ],
+      "aliases": []
+    },
+    {
+      "index": 71,
+      "canonical": "problem solving",
+      "sector_tags": [
+        "cross_sector"
+      ],
+      "aliases": []
+    }
+  ]
+}
